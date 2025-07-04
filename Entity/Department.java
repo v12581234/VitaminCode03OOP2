@@ -1,44 +1,21 @@
 package Entity;
-import java.util.ArrayList;
-import java.util.List;
 
-public class Department {
-    private int departmentId;
-    private String departmentName;
-    private String departmentAddress;
-    List<Department> listDepartment = new ArrayList<>();
-
-    public Department() {
+public  class Manager extends Employee{
+    public Manager() {
     }
 
-    public Department(int departmentId, String departmentName, String departmentAddress) {
-        this.departmentId = departmentId;
-        this.departmentName = departmentName;
-        this.departmentAddress = departmentAddress;
+    public Manager(int id, String name, int age, String address, double baseSalary, String position, String departmentId,double salary) {
+        super(id, name, age, address, baseSalary, position, departmentId,salary);
     }
 
-    public int getDepartmentId() {
-        return departmentId;
+    @Override
+    public double calculateSalary(){
+        return (getBaseSalary() + 5000000);
+        
     }
-
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
-    }
-
-    public String getDepartmentName() {
-        return departmentName;
-    }
-
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
-
-    public String getDepartmentAddress() {
-        return departmentAddress;
-    }
-
-    public void setDepartmentAddress(String departmentAddress) {
-        this.departmentAddress = departmentAddress;
-    }
+    @Override
+public  Employee inputInformation(){
+    super.inputInformation();
+    return new Manager(getId(), getName(), getAge(), getAddress(), getBaseSalary(),"Manager", getDepartmentId(),calculateSalary());
 }
-    
+}
